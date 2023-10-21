@@ -57,9 +57,9 @@ Se agregó un interruptor deslizante que, depende la posición, permite alternar
 Tambien se agregó la posibilidad de usar un motor de cc, que se enciende a determinada temperatura utilizando el sensor de temperatura y que sube y baja su velocidad solamente utilizando el contador normal. 
 Al apagar el motor de cc, se puede seguir utilizando ambos contadores y botones de la misma manera que antes.
 
-## MOTOR DE CC
+### MOTOR DE CC
 > El motor de corriente continua sirve para transformar energía eléctrica en energía mecánica, en ese sentido, este tipo de motores puede ser aprovechado en objetos que requieran movimiento.
-## SENSOR DE TEMPERATURA
+### SENSOR DE TEMPERATURA
 > El TMP36 es un sensor de temperatura que en su salida los proporciona una lectura en grados centígrados de precisión y de bajo voltaje. Se utilizan para medir la temperatura del ambiente.
 ---
 ~~~ C
@@ -98,7 +98,9 @@ void temperaturaControlMotor()
 > **note**
 Al proyecto se le agregó el siguiente componente: - SENSOR DE LUZ AMBIENTAL
 
-## SENSOR DE LUZ AMBIENTAL(FOTOTRANSISTOR)
+Se agregó un sensor de luz ambiental que permite tener el control del circuito. A determinada cantidad de luz, se encienden los display y permite su uso, de lo contrario se apagan los display y el motor en caso de que esté encendido.
+
+### SENSOR DE LUZ AMBIENTAL(FOTOTRANSISTOR)
 > Un fototransistor no es mas que un transistor cuya base se expone a la luz a través de una lente cambiando su corriente de base en función de esta luz.
 
 ## :computer: Link al proyecto parte tres
