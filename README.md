@@ -95,6 +95,11 @@ void temperaturaControlMotor()
 ![Tinkercad](circuito3.jpg)
 
 ## Descripcion
+> **note**
+Al proyecto se le agregó el siguiente componente: - SENSOR DE LUZ AMBIENTAL
+
+## SENSOR DE LUZ AMBIENTAL(FOTOTRANSISTOR)
+> Un fototransistor no es mas que un transistor cuya base se expone a la luz a través de una lente cambiando su corriente de base en función de esta luz.
 
 ## :computer: Link al proyecto parte tres
 - [Parte Tres](https://www.tinkercad.com/things/gzIJMUw3nne)
