@@ -62,7 +62,27 @@ Al apagar el motor de cc, se puede seguir utilizando ambos contadores y botones 
 ## SENSOR DE TEMPERATURA
 > El TMP36 es un sensor de temperatura que en su salida los proporciona una lectura en grados centígrados de precisión y de bajo voltaje. Se utilizan para medir la temperatura del ambiente.
 ---
-
+~~~ C
+//Función para prender el motor según la temperatura del sensor de temperatura.
+void temperaturaControlMotor()
+{
+  //Asigno en temperatura la funcion map con el valor de temperaturaRead.
+	 temperatura = map(temperaturaRead,20,350,-40,125);
+  
+  if (temperatura > TEMPERATURAMINIMA && temperatura < TEMPERATURAMAXIMA)
+    {
+    //si cumple con la condicion el motor sube la velocidad a medida que incrementa el contador común
+  		analogWrite(MOTOR,contadorDigito);
+  	}
+  else
+  {
+    //si no cumple la condicion, el motor permanece apagado o se apaga si estaba en funcionamiento.
+  	    analogWrite(MOTOR,LOW);
+  }  	  
+}
+~~~
+> Función para prender el motor según la temperatura del sensor de temperatura.
+---
 
 ## :computer: Link al proyecto parte dos
 
