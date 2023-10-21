@@ -13,7 +13,7 @@ El proyecto realiza un contador utilizando dos displays de 7 segmentos y tres bo
 
 ## :computer: Link al proyecto
 
-- [Proyecto](https://www.tinkercad.com/things/buAP0c983mY)
+- [Parte Uno](https://www.tinkercad.com/things/buAP0c983mY)
 
 # Proyecto parte dos: Modificación con Interruptor Deslizante y Números Primos
 ![Tinkercad](circuito2.jpg)
@@ -22,7 +22,7 @@ El proyecto realiza un contador utilizando dos displays de 7 segmentos y tres bo
 
 ## :computer: Link al proyecto parte dos
 
-- [Proyecto parte dos](https://www.tinkercad.com/things/3fFhyDG7J3W)
+- [Parte Dos](https://www.tinkercad.com/things/3fFhyDG7J3W)
 
 # Proyecto parte tres: Modificación según el Último Número de Documento
 ![Tinkercad](circuito3.jpg)
@@ -30,6 +30,6 @@ El proyecto realiza un contador utilizando dos displays de 7 segmentos y tres bo
 ## Descripcion
 
 ## :computer: Link al proyecto parte tres
-- [Proyecto parte tres](https://www.tinkercad.com/things/gzIJMUw3nne)
+- [Parte Tres](https://www.tinkercad.com/things/gzIJMUw3nne)
 
 
