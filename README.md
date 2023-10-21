@@ -51,10 +51,11 @@ void prendeDigito(int digito)
 
 ## Descripcion
 > **note**
-Al proyecto se agregaron los siguientes componentes: -INTERRUPTOR DESLIZANTE - MOTOR CC - SENSOR DE TEMPERATURA
+Al proyecto se le agregaron los siguientes componentes: -INTERRUPTOR DESLIZANTE - MOTOR CC - SENSOR DE TEMPERATURA
 
-
-  
+Se agregó un interruptor deslizante que, depende la posición, permite alternar entre usar un contador normal de 0 a 99 o un contador de números primos en el rango de 0 a 99.
+Tambien se agregó la posibilidad de usar un motor de cc, que se enciende a determinada temperatura utilizando el sensor de temperatura y que sube y baja su velocidad solamente utilizando el contador normal. 
+Al apagar el motor de cc, se puede seguir utilizando ambos contadores y botones de la misma manera que antes.
 
 ## :computer: Link al proyecto parte dos
 
