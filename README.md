@@ -57,6 +57,13 @@ Se agregó un interruptor deslizante que, depende la posición, permite alternar
 Tambien se agregó la posibilidad de usar un motor de cc, que se enciende a determinada temperatura utilizando el sensor de temperatura y que sube y baja su velocidad solamente utilizando el contador normal. 
 Al apagar el motor de cc, se puede seguir utilizando ambos contadores y botones de la misma manera que antes.
 
+## MOTOR DE CC
+> El motor de corriente continua sirve para transformar energía eléctrica en energía mecánica, en ese sentido, este tipo de motores puede ser aprovechado en objetos que requieran movimiento.
+## SENSOR DE TEMPERATURA
+> El TMP36 es un sensor de temperatura que en su salida los proporciona una lectura en grados centígrados de precisión y de bajo voltaje. Se utilizan para medir la temperatura del ambiente.
+---
+
+
 ## :computer: Link al proyecto parte dos
 
 - [Parte Dos](https://www.tinkercad.com/things/3fFhyDG7J3W)
