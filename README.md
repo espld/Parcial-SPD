@@ -102,6 +102,30 @@ Se agregó un sensor de luz ambiental que permite tener el control del circuito.
 
 ### SENSOR DE LUZ AMBIENTAL(FOTOTRANSISTOR)
 > Un fototransistor no es mas que un transistor cuya base se expone a la luz a través de una lente cambiando su corriente de base en función de esta luz.
+---
+~~~ C
+//Función para controlar el circuito entero dependiendo de la cantidad de luz ambiental.
+void controlLuzAmbiental()
+{
+  //Aisgno en luz la funcion map con el valor de luzRead.
+  luz = map(luzRead,0,154,0,154);
+  
+  if(luz >= LUZMINIMA && luz <= LUZMAXIMA)
+    {
+    //Si se cumple la condición,se prenden los display y permite el uso total del circuito.
+      posicionInterruptor();
+      temperaturaControlMotor();  
+    }
+  else
+    {
+    //Cuando no se cumple la condición, se apagan el motor y los display.
+        prendeDigito(APAGADOS);
+        analogWrite(MOTOR,LOW);
+    }
+}
+~~~
+> Función para controlar el circuito entero dependiendo de la cantidad de luz ambiental.
+---
 
 ## :computer: Link al proyecto parte tres
 - [Parte Tres](https://www.tinkercad.com/things/gzIJMUw3nne)
