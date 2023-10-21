@@ -1,0 +1,381 @@
+//Primer parcial SPD parte dos
+//Lucas Espindola - Division 1 E
+
+
+
+//Defino pines
+#define A 12
+#define B 13
+#define C 7
+#define D 8
+#define E 9
+#define F 11
+#define G 10
+
+#define ENTRADA_SUBE 4
+#define ENTRADA_BAJA 3
+#define ENTRADA_RESET 5
+
+#define UNIDAD A4 
+#define DECENA A5 
+
+#define APAGADOS 0
+#define TIMEDISPLAYON 10
+
+#define SWITCH 2
+
+#define MOTOR 6
+
+#define SENSORTMP A0
+
+//Inicializo variables
+
+//Inicio el contador comun en 0 y contador de numeros primos en 2.
+int contadorDigito = 0;
+int contadorPrimos = 2;
+
+/*Inicio de lo botones y los estados previos que luego usaré en una función.
+En 1 es no presionado.
+*/
+int sube = 1;
+int subePrevia = 1;
+int baja = 1;
+int bajaPrevia = 1;
+int reset = 1;
+int resetPrevia = 1;
+
+//Declaro temperatura mínima y máxima.
+int TEMPERATURAMINIMA = 30;
+int TEMPERATURAMAXIMA = 60;
+int temperatura;
+int temperaturaRead;
+
+//Configuro pines de entrada y de salida.
+void setup()
+  
+{
+  pinMode(A, OUTPUT);
+  pinMode(B, OUTPUT);
+  pinMode(C, OUTPUT);
+  pinMode(D, OUTPUT);
+  pinMode(E, OUTPUT);
+  pinMode(F, OUTPUT);
+  pinMode(G, OUTPUT);
+  
+  pinMode(ENTRADA_SUBE, INPUT_PULLUP);
+  pinMode(ENTRADA_BAJA, INPUT_PULLUP);
+  pinMode(ENTRADA_RESET, INPUT_PULLUP);
+  pinMode(SWITCH,INPUT_PULLUP);
+
+  
+  pinMode(UNIDAD, OUTPUT);
+  pinMode(DECENA, OUTPUT);
+  
+  pinMode(MOTOR,OUTPUT);
+  
+  Serial.begin(9600);
+}
+
+//Configura los pines para mostrar un digito según los segmentos del display.
+void impresionDigitos(int digito)
+{
+  digitalWrite(A,LOW);
+  digitalWrite(B,LOW);
+  digitalWrite(C,LOW);
+  digitalWrite(D,LOW);
+  digitalWrite(E,LOW);
+  digitalWrite(F,LOW);
+  digitalWrite(G,LOW);
+
+	//En el switch se muestra el digito segun al case que entra.
+  	switch(digito)
+    {                 
+      	case 0:   //digito 0   
+          digitalWrite(A,HIGH);
+          digitalWrite(B,HIGH);
+          digitalWrite(C,HIGH);
+          digitalWrite(D,HIGH);
+          digitalWrite(E,HIGH);
+          digitalWrite(F,HIGH);      	
+          break;
+      
+    	case 1:  //digito 1    
+          digitalWrite(B,HIGH);
+          digitalWrite(C,HIGH);    
+          break;
+      
+      	case 2:  //digito2      
+          digitalWrite(A,HIGH);
+          digitalWrite(B,HIGH);
+          digitalWrite(D,HIGH);      	
+          digitalWrite(E,HIGH);
+          digitalWrite(G,HIGH);      	      
+      	  break;      
+      
+      	case 3:   //digito 3   
+          digitalWrite(A,HIGH);
+          digitalWrite(B,HIGH);
+          digitalWrite(C,HIGH);
+          digitalWrite(D,HIGH);
+          digitalWrite(G,HIGH);            	
+          break;     
+      
+      	case 4:   //digito 4   
+          digitalWrite(B,HIGH);
+          digitalWrite(C,HIGH);
+          digitalWrite(F,HIGH);
+          digitalWrite(G,HIGH);      	     	
+          break;
+            
+      	case 5:    //digito 5  
+          digitalWrite(A,HIGH);
+          digitalWrite(F,HIGH);
+          digitalWrite(G,HIGH);
+          digitalWrite(C,HIGH);
+          digitalWrite(D,HIGH);   
+          break;      
+      
+      	case 6:   //digito 6   
+          digitalWrite(A,HIGH);
+          digitalWrite(C,HIGH);
+          digitalWrite(D,HIGH);
+          digitalWrite(E,HIGH);
+          digitalWrite(F,HIGH);      
+          digitalWrite(G,HIGH);
+          break;
+            
+      	case 7:    //digito 7  
+          digitalWrite(A,HIGH);
+          digitalWrite(B,HIGH);
+          digitalWrite(C,HIGH);     
+          break;
+            
+      	case 8:    //digito 8
+          digitalWrite(A,HIGH);
+          digitalWrite(B,HIGH);
+          digitalWrite(C,HIGH);
+          digitalWrite(D,HIGH);
+          digitalWrite(E,HIGH);
+          digitalWrite(F,HIGH);
+          digitalWrite(G,HIGH);
+          break;
+            
+      	case 9: 	//digito 9      
+          digitalWrite(A,HIGH);
+          digitalWrite(B,HIGH);
+          digitalWrite(C,HIGH);
+          digitalWrite(F,HIGH);
+          digitalWrite(G,HIGH);      	
+          break;            
+    }
+}
+
+//Funcion para detectar si se presionó un boton y actuar en consecuencia.
+int keypressed(void)
+{
+  sube = digitalRead(ENTRADA_SUBE);
+  baja = digitalRead(ENTRADA_BAJA);
+  reset = digitalRead(ENTRADA_RESET);
+  
+  if(sube) //El boton no se presionó.
+  {
+    subePrevia = 1;
+  }
+  if(baja)
+  {
+    bajaPrevia = 1;
+  }
+  if(reset)
+  {
+    resetPrevia = 1;
+  }
+  //Pregunto si el botón se presionó y si es distinta al estado anterior.
+  //Devuelvo el valor del boton	
+  if(sube == 0 && sube != subePrevia)
+  {
+    subePrevia = sube;
+    return ENTRADA_SUBE;
+  }
+  if(baja == 0 && baja != bajaPrevia)
+  {
+    bajaPrevia = baja;
+    return ENTRADA_BAJA;
+  }
+  if(reset == 0 && reset != resetPrevia)
+  {
+    resetPrevia = reset;
+    return ENTRADA_RESET;
+  }
+  return 0; 
+} 
+
+//Realizo multiplexacion
+//Enciendo un display y desactivo el otro.
+void prendeDigito(int digito)
+{ 
+    if(digito == UNIDAD)
+  {
+    digitalWrite(UNIDAD, LOW);
+    digitalWrite(DECENA, HIGH);
+    delay(TIMEDISPLAYON);
+  }
+   else if(digito == DECENA)
+    {
+      digitalWrite(UNIDAD, HIGH);
+       digitalWrite(DECENA, LOW);
+      delay(TIMEDISPLAYON);
+    }
+      else
+      {
+        digitalWrite(UNIDAD,HIGH);
+        digitalWrite(DECENA,HIGH);
+      }
+}
+
+//Muestro el numero del contador en el display.
+void impresionContador(int contador)
+{
+
+	prendeDigito(APAGADOS);
+    impresionDigitos((int)contador / 10);
+  	prendeDigito(DECENA);
+  
+  	prendeDigito(APAGADOS);
+    impresionDigitos(contador - 10 *((int)contador / 10));
+    prendeDigito(UNIDAD);  
+}
+
+//Funcion para comprobar si el número en el parámetro es un número primo
+
+bool esPrimo(int n)
+{
+  if(n <= 1)
+  {
+    return false;
+  }
+   for (int i = 2; i <= n / 2; i++) 
+   {
+     if (n % i == 0) 
+     {
+       return false;
+     }
+    }
+  
+    return true;
+}
+
+//Funcion que recibe valor del pulsador y controla el contador comun.
+void interruptorContador(int pulsador)
+{
+  if (pulsador == ENTRADA_SUBE)
+  { 
+    //Incrementa el contador. Cuando llega a 99, reinicia en 0.
+    contadorDigito++;
+        if (contadorDigito > 99)
+        {
+          contadorDigito = 0;
+        }
+   }
+  else if (pulsador == ENTRADA_BAJA)
+  {
+    //Disminuye el contador. Cuando llega a 0, reinicia en 99.
+    contadorDigito--;
+    if (contadorDigito < 0)
+    {
+      contadorDigito = 99;
+    }
+  } 
+  else if(pulsador == ENTRADA_RESET)
+  {
+    //Se reinicia el contador en 0.
+    contadorDigito = 0;
+  }
+  impresionContador(contadorDigito); //Imprimo el valor del contador en los display.
+}
+
+////Funcion que recibe valor del pulsador y controla el contador de números primos.
+void interruptorContadorPrimos(int pulsador)
+{
+  if(pulsador == ENTRADA_SUBE)
+  {
+    contadorPrimos++;
+    //Si el valor del contador no es primo, se sigue incrementando hasta encontrar el siguiente primo.
+    //Cuando llega a 97 se reinicia en 2.
+    while (!esPrimo(contadorPrimos))
+    {
+      contadorPrimos++;
+      if(contadorPrimos > 97)
+      {
+        contadorPrimos = 2;
+      }
+    }
+  }
+  else if(pulsador == ENTRADA_BAJA)
+  {
+    contadorPrimos--;
+    ////Si el valor del contador no es primo, se sigue disminuyendo el valor hasta encontrar el siguiente primo.
+    //Cuando llega a 2 se reinicia en 97.
+    while (!esPrimo(contadorPrimos))
+    {
+      contadorPrimos--;
+      if(contadorPrimos < 2)
+      {
+        contadorPrimos = 97;
+      }
+    }
+  }
+    else if(pulsador == ENTRADA_RESET)
+      //Se reinicia el contador de números primos en 2.
+    {
+    	contadorPrimos = 2;
+    }
+  impresionContador(contadorPrimos);//Imprimo el valor del contador de números primos en los display.
+}
+
+//Funcion para saber la posicion del interruptor que recibe el estado.
+void posicionInterruptor(int estadoInterruptor)
+{  
+  //Asigno en la variable pulsador a la funcion keypressed()
+  int pulsador = keypressed();
+  
+  if(estadoInterruptor == 0)
+  {
+    //Si el estado es 0 llamo a la función interruptorContador.
+ 	interruptorContador(pulsador);
+  }
+  else if(estadoInterruptor == 1)    
+  {    
+    //si el estado es 1 llamo a la función interruptorContadorPrimos
+     interruptorContadorPrimos(pulsador);
+  }
+}
+
+//Función para prender el motor según la temperatura del sensor de temperatura.
+void temperaturaControlMotor()
+{
+  //Asigno en temperatura la funcion map con el valor de temperaturaRead.
+	 temperatura = map(temperaturaRead,20,350,-40,125);
+  
+  if (temperatura > TEMPERATURAMINIMA && temperatura < TEMPERATURAMAXIMA)
+    {
+    //si cumple con la condicion el motor sube la velocidad a medida que incrementa el contador común
+  		analogWrite(MOTOR,contadorDigito);
+  	}
+  else
+  {
+    //si no cumple la condicion, el motor permanece apagado o se apaga si estaba en funcionamiento.
+  	    analogWrite(MOTOR,LOW);
+  }  	  
+}
+
+
+void loop()
+{	
+  
+  int lecturaInterruptor = digitalRead(SWITCH);
+  temperaturaRead = analogRead(SENSORTMP);
+
+  posicionInterruptor(lecturaInterruptor);
+  
+  temperaturaControlMotor();
+}
