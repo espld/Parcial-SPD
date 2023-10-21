@@ -7,7 +7,7 @@
 ---
 
 # Proyecto parte uno: Contador de 0 a 99 con Display 7 Segmentos y Multiplexación
-![Tinkercad](ciucuito.jpg)
+![Tinkercad](circuito1.jpeg)
 
 ## Descripción
 
@@ -47,7 +47,7 @@ void prendeDigito(int digito)
 ---
 
 # Proyecto parte dos: Modificación con Interruptor Deslizante y Números Primos
-![Tinkercad](circuito2.jpg)
+![Tinkercad](circuito2.jpeg)
 
 ## Descripcion
 > **note**
@@ -92,7 +92,7 @@ void temperaturaControlMotor()
 ---
 
 # Proyecto parte tres: Modificación según el Último Número de Documento
-![Tinkercad](circuito3.jpg)
+![Tinkercad](circuito3.jpeg)
 
 ## Descripcion
 > **note**
