@@ -1,5 +1,5 @@
 # Parcial Domiciliario
-![Tinkercad]()
+![Tinkercad](ArduinoTinkercad.jpg)
 # Proyecto parte uno: Contador de 0 a 99 con Display 7 Segmentos y Multiplexación
 ![Tinkercad](ciucuito.jpg)
 
