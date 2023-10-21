@@ -1,5 +1,9 @@
-# Parcial Domiciliario
+# Parcial Domiciliario :page_facing_up:
 ![Tinkercad](ArduinoTinkercad.jpg)
+
+# Integrantes
+- :cowboy_hat_face: Lucas Espindola
+
 # Proyecto parte uno: Contador de 0 a 99 con Display 7 Segmentos y Multiplexación
 ![Tinkercad](ciucuito.jpg)
 
@@ -7,11 +11,7 @@
 
 El proyecto realiza un contador utilizando dos displays de 7 segmentos y tres botones para controlar la cuenta. Se implementen la técnica de multiplexación para mostrar los dígitos en los displays. El contador inicia en 0 y los botones aumentan y disminuyen su cuenta.
 
-## Integrantes
-
-- Lucas Espindola
-
-## Link al proyecto
+## :computer: Link al proyecto
 
 - [Proyecto](https://www.tinkercad.com/things/buAP0c983mY)
 
@@ -20,7 +20,7 @@ El proyecto realiza un contador utilizando dos displays de 7 segmentos y tres bo
 
 ## Descripcion
 
-## Link al proyecto parte dos
+## :computer: Link al proyecto parte dos
 
 - [Proyecto parte dos](https://www.tinkercad.com/things/3fFhyDG7J3W)
 
@@ -29,7 +29,7 @@ El proyecto realiza un contador utilizando dos displays de 7 segmentos y tres bo
 
 ## Descripcion
 
-## Link al proyecto parte tres
+## :computer: Link al proyecto parte tres
 - [Proyecto parte tres](https://www.tinkercad.com/things/gzIJMUw3nne)
 
 
